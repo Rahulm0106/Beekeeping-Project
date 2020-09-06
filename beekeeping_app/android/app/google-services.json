@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "701384820024",
+    "firebase_url": "https://beekeeping-project.firebaseio.com",
+    "project_id": "beekeeping-project",
+    "storage_bucket": "beekeeping-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701384820024:android:9f49300681fd0afc146dcd",
+        "android_client_info": {
+          "package_name": "com.example.beekeeping_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701384820024-d1vni8aj5p4sf748a3e0orha54ip32dg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.beekeeping_app",
+            "certificate_hash": "0c7bdf64162ba74487d6ae699fa2f40192544a86"
+          }
+        },
+        {
+          "client_id": "701384820024-3ls81cnda0lb1fcao4fua52sd9s7aq42.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRQLa8pJcZ7QIHvZtpHTo_EDmRWlZIN8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701384820024-3ls81cnda0lb1fcao4fua52sd9s7aq42.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
