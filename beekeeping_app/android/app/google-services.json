@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "701384820024",
-    "firebase_url": "https://beekeeping-project.firebaseio.com",
-    "project_id": "beekeeping-project",
-    "storage_bucket": "beekeeping-project.appspot.com"
+    "project_number": "711674725385",
+    "firebase_url": "https://beekeeping-project-ef2f0.firebaseio.com",
+    "project_id": "beekeeping-project-ef2f0",
+    "storage_bucket": "beekeeping-project-ef2f0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:701384820024:android:9f49300681fd0afc146dcd",
+        "mobilesdk_app_id": "1:711674725385:android:15978c8f539947743924d8",
         "android_client_info": {
           "package_name": "com.example.beekeeping_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "701384820024-d1vni8aj5p4sf748a3e0orha54ip32dg.apps.googleusercontent.com",
+          "client_id": "711674725385-9d5s084o5oa6h6ue74f1123o18flts5o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.beekeeping_app",
-            "certificate_hash": "0c7bdf64162ba74487d6ae699fa2f40192544a86"
+            "certificate_hash": "9f26bf3bec44bc3c0973028735e7cb7177723eb2"
           }
         },
         {
-          "client_id": "701384820024-3ls81cnda0lb1fcao4fua52sd9s7aq42.apps.googleusercontent.com",
+          "client_id": "711674725385-cootpvdgsqsvdrf640fkqaj74atj7cte.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBRQLa8pJcZ7QIHvZtpHTo_EDmRWlZIN8o"
+          "current_key": "AIzaSyBy9EVlpx5MKyKj6tbF-KxEH-S7XmA0FTw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "701384820024-3ls81cnda0lb1fcao4fua52sd9s7aq42.apps.googleusercontent.com",
+              "client_id": "711674725385-cootpvdgsqsvdrf640fkqaj74atj7cte.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,42 +1,71 @@
 {
   "project_info": {
-    "project_number": "701384820024",
-    "firebase_url": "https://beekeeping-project.firebaseio.com",
-    "project_id": "beekeeping-project",
-    "storage_bucket": "beekeeping-project.appspot.com"
+    "project_number": "764496767370",
+    "firebase_url": "https://smart-trading-advisor.firebaseio.com",
+    "project_id": "smart-trading-advisor",
+    "storage_bucket": "smart-trading-advisor.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:701384820024:android:0f4fc59ffc5439cf146dcd",
+        "mobilesdk_app_id": "1:764496767370:android:0104b0bf4a640169270073",
         "android_client_info": {
           "package_name": "com.example.beekeeping_project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "701384820024-53jo49qvv766hfv52m6qku87bbm2am3h.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.beekeeping_project",
-            "certificate_hash": "0c7bdf64162ba74487d6ae699fa2f40192544a86"
-          }
-        },
-        {
-          "client_id": "701384820024-3ls81cnda0lb1fcao4fua52sd9s7aq42.apps.googleusercontent.com",
+          "client_id": "764496767370-nm5d0eo3c7t6ahkhmfpag0c1iejg0fnb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBRQLa8pJcZ7QIHvZtpHTo_EDmRWlZIN8o"
+          "current_key": "AIzaSyDE5skAb5HWGLMFgsrL5SZOLMFdunLWYE4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "701384820024-3ls81cnda0lb1fcao4fua52sd9s7aq42.apps.googleusercontent.com",
+              "client_id": "764496767370-nm5d0eo3c7t6ahkhmfpag0c1iejg0fnb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764496767370:android:8fef3847a7b99327270073",
+        "android_client_info": {
+          "package_name": "com.example.smart_trading_advisor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764496767370-op80t6n32f5vt64613bo5ghhvgrglima.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smart_trading_advisor",
+            "certificate_hash": "9f26bf3bec44bc3c0973028735e7cb7177723eb2"
+          }
+        },
+        {
+          "client_id": "764496767370-nm5d0eo3c7t6ahkhmfpag0c1iejg0fnb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE5skAb5HWGLMFgsrL5SZOLMFdunLWYE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764496767370-nm5d0eo3c7t6ahkhmfpag0c1iejg0fnb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
