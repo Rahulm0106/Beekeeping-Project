@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'beekeeping_app',
-      theme: ThemeData(primaryColor: Colors.yellow.shade600),
+      theme: ThemeData(
+        primaryColor: Colors.yellow.shade600,
+      ),
       home: HomePage(),
       routes: {
         //SignupScreen.routeName: (ctx) => SignupScreen(),
