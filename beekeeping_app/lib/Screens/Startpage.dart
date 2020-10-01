@@ -1,3 +1,4 @@
+import 'package:beekeeping_app/Screens/newuser.dart';
 import 'package:flutter/material.dart';
 import 'Login.dart';
 
@@ -64,7 +65,10 @@ class _StartState extends State<Start> {
               SizedBox(width: 20.0),
               RaisedButton(
                   padding: EdgeInsets.only(left: 30, right: 30),
-                  onPressed: () {},
+                  onPressed: () async {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => NewUser()));
+                  },
                   child: Text(
                     'New User',
                     style: TextStyle(
