@@ -1,4 +1,5 @@
 import 'package:beekeeping_app/Screens/Startpage.dart';
+import 'package:beekeeping_app/Screens/newuser.dart';
 import 'package:flutter/material.dart';
 // ignore: duplicate_import
 import 'package:beekeeping_app/Screens/Startpage.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         LoginScreen.routeName: (ctx) => LoginScreen(),
         HomePage.routeName: (ctx) => HomePage(),
         Start.routeName: (ctx) => Start(),
+        NewUser.routeName: (ctx) => NewUser(),
       },
     );
   }
