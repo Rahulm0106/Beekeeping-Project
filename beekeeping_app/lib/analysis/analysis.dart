@@ -4,13 +4,13 @@ import 'package:smart_trading_advisor/assets/app_layout.dart';
 import 'package:smart_trading_advisor/screens/startup.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomePage extends StatefulWidget {
-  static const routeName = '/home';
+class Analysis extends StatefulWidget {
+  static const routeName = '/analysis';
   @override
-  _HomePageState createState() => _HomePageState();
+  _AnalysisState createState() => _AnalysisState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AnalysisState extends State<Analysis> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final db = Firestore.instance;
   FirebaseUser newUser;
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarBuilder("Dashboard"),
+      appBar: appBarBuilder("Analysis"),
       body: Container(
         child: !isloggedin
             ? Center(child: CircularProgressIndicator())

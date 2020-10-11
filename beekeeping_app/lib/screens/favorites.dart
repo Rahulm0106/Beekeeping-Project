@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smart_trading_advisor/assets/app_layout.dart';
-import 'package:smart_trading_advisor/screens/startup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:smart_trading_advisor/screens/home.dart';
 
-class HomePage extends StatefulWidget {
-  static const routeName = '/home';
+class Favorites extends StatefulWidget {
+  static const routeName = '/favorites';
   @override
-  _HomePageState createState() => _HomePageState();
+  _FavoritesState createState() => _FavoritesState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _FavoritesState extends State<Favorites> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final db = Firestore.instance;
   FirebaseUser newUser;
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     _auth.onAuthStateChanged.listen((newUser) {
       if (newUser == null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Start()));
+            context, MaterialPageRoute(builder: (context) => HomePage()));
       }
     });
   }
@@ -43,8 +43,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  // ignore: must_call_super
   void initState() {
-    super.initState();
     this.checkAuthentication();
     this.getUser();
   }
@@ -52,7 +52,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarBuilder("Dashboard"),
+      appBar: appBarBuilder("Favorites"),
+      bottomNavigationBar: BottomNav(),
       body: Container(
         child: !isloggedin
             ? Center(child: CircularProgressIndicator())
@@ -77,7 +78,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
       ),
-      bottomNavigationBar: BottomNav(),
     );
   }
 

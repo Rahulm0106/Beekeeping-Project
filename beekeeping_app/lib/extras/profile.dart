@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smart_trading_advisor/assets/app_layout.dart';
-import 'package:smart_trading_advisor/screens/startup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:smart_trading_advisor/screens/startup.dart';
 
-class HomePage extends StatefulWidget {
-  static const routeName = '/home';
+class Profile extends StatefulWidget {
+  static const routeName = '/profile';
   @override
-  _HomePageState createState() => _HomePageState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ProfileState extends State<Profile> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final db = Firestore.instance;
   FirebaseUser newUser;
