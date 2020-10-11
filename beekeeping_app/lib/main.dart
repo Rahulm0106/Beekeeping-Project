@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'beekeeping_app',
       theme: ThemeData(
-        primaryColor: Colors.yellow.shade600,
+        primaryColor: Colors.yellow.shade600, 
       ),
       home: HomePage(),
       routes: {

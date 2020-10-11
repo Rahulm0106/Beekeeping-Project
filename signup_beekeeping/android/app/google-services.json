@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "711674725385",
+    "firebase_url": "https://beekeeping-project-ef2f0.firebaseio.com",
+    "project_id": "beekeeping-project-ef2f0",
+    "storage_bucket": "beekeeping-project-ef2f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711674725385:android:15978c8f539947743924d8",
+        "android_client_info": {
+          "package_name": "com.example.beekeeping_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711674725385-9d5s084o5oa6h6ue74f1123o18flts5o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.beekeeping_app",
+            "certificate_hash": "9f26bf3bec44bc3c0973028735e7cb7177723eb2"
+          }
+        },
+        {
+          "client_id": "711674725385-cootpvdgsqsvdrf640fkqaj74atj7cte.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy9EVlpx5MKyKj6tbF-KxEH-S7XmA0FTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711674725385-cootpvdgsqsvdrf640fkqaj74atj7cte.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711674725385:android:526bf605b6ac56683924d8",
+        "android_client_info": {
+          "package_name": "com.example.signup_beekeeping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711674725385-lh5e33l73f45spf2clil39pkb6e51go8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.signup_beekeeping",
+            "certificate_hash": "a3f79bbcf5b06db842aa67ffed8cfabc6db565a5"
+          }
+        },
+        {
+          "client_id": "711674725385-cootpvdgsqsvdrf640fkqaj74atj7cte.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy9EVlpx5MKyKj6tbF-KxEH-S7XmA0FTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711674725385-cootpvdgsqsvdrf640fkqaj74atj7cte.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
