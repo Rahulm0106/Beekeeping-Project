@@ -1,3 +1,4 @@
+import 'package:beekeeping_app/Screens/locations.dart';
 import 'package:beekeeping_app/Screens/newuser.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -165,7 +166,7 @@ class _HomePageState extends State<HomePage> {
           
             if (index == 0) {
               Navigator.push(
-                context, MaterialPageRoute(builder: (context) => NewUser()));
+                context, MaterialPageRoute(builder: (context) => MyLocationsList()));
               // routes: {
                 
               // },
