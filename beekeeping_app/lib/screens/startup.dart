@@ -12,46 +12,41 @@ class _StartState extends State<Start> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade900,
       body: Container(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 35.0),
+            SizedBox(height: 150.0),
             Container(
-              height: 300,
-              child: Image(
-                image: AssetImage("images/logo.png"),
-                height: 100,
-                width: 100,
-                fit: BoxFit.contain,
+              height: 200,
+              child: Center(
+                child: Image(
+                  image: AssetImage("images/logo.png"),
+                  //height: 150,
+                  width: 250,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
-            SizedBox(height: 20),
             RichText(
                 text: TextSpan(
-                    text: 'Smart Trading ',
-                    style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                    children: <TextSpan>[
-                  TextSpan(
-                      text: 'App',
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromRGBO(62, 72, 184, 1.0)))
-                ])),
+              text: 'Beekeeping',
+              style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.yellow.shade700),
+            )),
             SizedBox(height: 10.0),
             Text(
-              'Predict the future',
-              style: TextStyle(color: Colors.black),
+              'Make Smart Decision',
+              style: TextStyle(color: Colors.yellow.shade700),
             ),
-            SizedBox(height: 75.0),
+            SizedBox(height: 30.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 RaisedButton(
-                    padding: EdgeInsets.only(left: 45, right: 45),
+                    padding: EdgeInsets.only(left: 30, right: 30),
                     onPressed: () async {
                       Navigator.push(
                           context,
@@ -61,18 +56,18 @@ class _StartState extends State<Start> {
                     child: Text(
                       'Login',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    color: Colors.black),
-                SizedBox(width: 10.0),
+                    color: Colors.yellow.shade700),
+                SizedBox(width: 20.0),
                 RaisedButton(
-                    padding: EdgeInsets.only(left: 40, right: 40),
+                    padding: EdgeInsets.only(left: 30, right: 30),
                     onPressed: () async {
                       Navigator.push(
                           context,
@@ -82,15 +77,15 @@ class _StartState extends State<Start> {
                     child: Text(
                       'Sign Up',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    color: Colors.black),
+                    color: Colors.yellow.shade700),
               ],
             ),
             SizedBox(height: 125.0),
@@ -100,16 +95,17 @@ class _StartState extends State<Start> {
                     style: TextStyle(
                       fontSize: 15.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Colors.yellow.shade700,
                     )),
               ),
+              SizedBox(height: 10.0),
               Container(
-                padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
                 child: Text(
-                    'Stock market investments are subject to market risks. Read all Terms and Conditions carefully!',
+                    'Inacurracies may arrive in data due to unforseen circumstances',
                     style: TextStyle(
                       fontSize: 12.0,
-                      color: Colors.black,
+                      color: Colors.yellow.shade700,
                     )),
               ),
             ])

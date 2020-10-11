@@ -36,192 +36,219 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         //resizeToAvoidBottomPadding: false,
+        backgroundColor: Colors.grey.shade900,
         body: SingleChildScrollView(
-      child: Container(
-        padding:
-            EdgeInsets.only(top: 0.0, right: 20.0, left: 20.0, bottom: 0.0),
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 400,
-              child: Image(
-                image: AssetImage("images/logo.png"),
-                height: 100,
-                width: 100,
-                fit: BoxFit.contain,
-              ),
-            ),
-            Container(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      child: TextFormField(
-                          validator: (value) {
-                            Pattern pattern =
-                                r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-                            RegExp regex = new RegExp(pattern);
-                            if (value.isEmpty || !regex.hasMatch(value))
-                              return 'Enter Valid Email Id!!!';
-                            else
-                              return null;
-                          },
-                          decoration: InputDecoration(
-                              hintText: 'Email', prefixIcon: Icon(Icons.email)),
-                          onSaved: (value) => _email = value),
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 150.0),
+                Container(
+                  height: 200,
+                  child: Center(
+                    child: Image(
+                      image: AssetImage("images/logo.png"),
+                      //height: 150,
+                      width: 250,
+                      fit: BoxFit.contain,
                     ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Container(
-                      child: TextFormField(
-                          validator: (String value) {
-                            if (value.isEmpty || value.length < 8) {
-                              return 'invalid password';
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                              hintText: 'Password',
-                              prefixIcon: Icon(Icons.lock),
-                              suffixIcon: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _isHidden = !_isHidden;
-                                  });
-                                },
-                                icon: _isHidden
-                                    ? Icon(Icons.visibility)
-                                    : Icon(Icons.visibility_off),
-                              )),
-                          obscureText: _isHidden,
-                          onSaved: (value) => _password = value),
-                    ),
-                    SizedBox(height: 10.0),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          GestureDetector(
-                            child: Text(
-                              "Forgot Password?",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                            onTap: () async {
-                              if (_formKey.currentState.validate()) {
-                                _formKey.currentState.save();
-
-                                try {
-                                  await _auth.sendPasswordResetEmail(
-                                      email: _email);
-                                  showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text('Forgot Password'),
-                                          content: Text(
-                                              'An email with your password verification link has been successfully sent to you registered email ID, please click on the link to generate a new password...'),
-                                          actions: <Widget>[
-                                            FlatButton(
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                                child: Text('OK'))
-                                          ],
-                                        );
-                                      });
-                                } catch (e) {
-                                  showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text('ERROR'),
-                                          content: Text('$e'),
-                                          actions: <Widget>[
-                                            FlatButton(
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                                child: Text('OK'))
-                                          ],
-                                        );
-                                      });
-                                }
-                              }
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    RaisedButton(
-                      padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
-                      onPressed: () async {
-                        if (_formKey.currentState.validate()) {
-                          _formKey.currentState.save();
-
-                          try {
-                            final newUser =
-                                await _auth.signInWithEmailAndPassword(
-                                    email: _email, password: _password);
-                            if (newUser != null) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePage()));
-                            }
-                          } catch (e) {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: Text('Wrong Email or Password'),
-                                    content: Text(
-                                        '$e\n\nPlease recheck your Email ID and Password'),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text('OK'))
-                                    ],
-                                  );
-                                });
-                          }
-                        }
-                      },
-                      child: Container(
-                        child: Text('Login',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold)),
-                        width: 100,
-                        alignment: Alignment.center,
-                      ),
-                      color: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                    )
-                  ],
+                  ),
                 ),
-              ),
+                Container(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: TextFormField(
+                              cursorColor: Colors.white,
+                              style: TextStyle(color: Colors.white),
+                              validator: (value) {
+                                Pattern pattern =
+                                    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                                RegExp regex = new RegExp(pattern);
+                                if (value.isEmpty || !regex.hasMatch(value))
+                                  return 'Enter Valid Email Id!!!';
+                                else
+                                  return null;
+                              },
+                              decoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(25.0),
+                                    borderSide: BorderSide(
+                                      color: Colors.yellow.shade700,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                  labelText: ('Email'),
+                                  labelStyle:
+                                      TextStyle(color: Colors.yellow.shade700),
+                                  prefixIcon: Icon(
+                                    Icons.email,
+                                    color: Colors.yellow.shade700,
+                                  )),
+                              onSaved: (value) => _email = value),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: TextFormField(
+                              cursorColor: Colors.white,
+                              style: TextStyle(color: Colors.white),
+                              validator: (String value) {
+                                if (value.isEmpty || value.length < 8) {
+                                  return 'invalid password';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(25.0),
+                                    borderSide: BorderSide(
+                                      color: Colors.yellow.shade700,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                  labelText: 'Password',
+                                  labelStyle:
+                                      TextStyle(color: Colors.yellow.shade700),
+                                  prefixIcon: Icon(
+                                    Icons.lock,
+                                    color: Colors.yellow.shade700,
+                                  )),
+                              obscureText: true,
+                              onSaved: (value) => _password = value),
+                        ),
+                        SizedBox(height: 10.0),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              GestureDetector(
+                                child: Text(
+                                  "Forgot Password?",
+                                  style:
+                                      TextStyle(color: Colors.yellow.shade700),
+                                ),
+                                onTap: () async {
+                                  if (_formKey.currentState.validate()) {
+                                    _formKey.currentState.save();
+
+                                    try {
+                                      await _auth.sendPasswordResetEmail(
+                                          email: _email);
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text('Forgot Password'),
+                                              content: Text(
+                                                  'An email with your password verification link has been successfully sent to you registered email ID, please click on the link to generate a new password...'),
+                                              actions: <Widget>[
+                                                FlatButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child: Text('OK'))
+                                              ],
+                                            );
+                                          });
+                                    } catch (e) {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text('ERROR'),
+                                              content: Text('$e'),
+                                              actions: <Widget>[
+                                                FlatButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child: Text('OK'))
+                                              ],
+                                            );
+                                          });
+                                    }
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        RaisedButton(
+                          padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
+                          onPressed: () async {
+                            if (_formKey.currentState.validate()) {
+                              _formKey.currentState.save();
+
+                              try {
+                                final newUser =
+                                    await _auth.signInWithEmailAndPassword(
+                                        email: _email, password: _password);
+                                if (newUser != null) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomePage()));
+                                }
+                              } catch (e) {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Wrong Email or Password'),
+                                        content: Text(
+                                            '$e\n\nPlease recheck your Email ID and Password'),
+                                        actions: <Widget>[
+                                          FlatButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text('OK'))
+                                        ],
+                                      );
+                                    });
+                              }
+                            }
+                          },
+                          child: Container(
+                            child: Text('Login',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold)),
+                            // width: 50,
+                            // alignment: Alignment.center,
+                          ),
+                          color: Colors.yellow.shade700,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                GestureDetector(
+                  child: Text(
+                    "Don't have an acoount?",
+                    style: TextStyle(color: Colors.yellow.shade700),
+                  ),
+                  onTap: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignupScreen()));
+                  },
+                )
+              ],
             ),
-            SizedBox(
-              height: 10.0,
-            ),
-            GestureDetector(
-              child: Text("Don't have an acoount?"),
-              onTap: () async {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SignupScreen()));
-              },
-            )
-          ],
-        ),
-      ),
-    ));
+          ),
+        ));
   }
 }
