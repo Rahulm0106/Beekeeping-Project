@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smart_trading_advisor/analysis/analysis.dart';
-import 'package:smart_trading_advisor/assets/app_layout.dart';
+import 'package:beekeeping_app/analysis/analysis.dart';
+import 'package:beekeeping_app/assets/app_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:smart_trading_advisor/screens/home.dart';
+import 'package:beekeeping_app/screens/home.dart';
 
 class MyStocksList extends StatefulWidget {
   static const routeName = '/stocklist';
@@ -50,44 +50,21 @@ class _MyStocksListState extends State<MyStocksList> {
     this.getUser();
   }
 
-  Widget _stockList(BuildContext context, DocumentSnapshot document) {
+  Widget _locationList(BuildContext context, DocumentSnapshot document) {
     return ListTile(
       leading: IconButton(
           icon: Icon(Icons.analytics_outlined),
-          onPressed: () async {
-            try {
-              if (newUser != null) {
-                var firebaseUser = await _auth.currentUser();
-                data(firebaseUser, document['stock-symbol'],
-                    document['stock-name']);
-              }
-            } catch (e) {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Error!!!'),
-                      content: Text('$e'),
-                      actions: <Widget>[
-                        FlatButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text('OK'))
-                      ],
-                    );
-                  });
-            }
-          }),
-      title: Text(document['stock-name']),
-      subtitle: Text(document['stock-symbol']),
+          onPressed: () {
+          },),
+      title: Text(document['location-name']),
+      subtitle: Text(document['location-symbol']),
       trailing: IconButton(
         icon: Icon(Icons.delete),
         onPressed: () async {
           try {
             if (newUser != null) {
               var firebaseUser = await _auth.currentUser();
-              delete(firebaseUser, document['stock-symbol']);
+              delete(firebaseUser, document['location-id']);
             }
           } catch (e) {
             showDialog(
@@ -108,32 +85,7 @@ class _MyStocksListState extends State<MyStocksList> {
           }
         },
       ),
-      onTap: () async {
-        try {
-          if (newUser != null) {
-            var firebaseUser = await _auth.currentUser();
-            analysis(firebaseUser, document['stock-symbol']);
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Analysis()));
-          }
-        } catch (e) {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text('Error!!!'),
-                  content: Text('$e'),
-                  actions: <Widget>[
-                    FlatButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Text('OK'))
-                  ],
-                );
-              });
-        }
-      },
+      onTap: (){}, 
     );
   }
 
@@ -142,77 +94,72 @@ class _MyStocksListState extends State<MyStocksList> {
     return !isloggedin
         ? Center(child: CircularProgressIndicator())
         : Scaffold(
-            appBar: appBarBuilder("My Stocks List"),
+            appBar: appBarBuilder("My Locations"),
             bottomNavigationBar: BottomNav(),
             body: StreamBuilder(
                 stream: db
                     .collection('user')
                     .document(newUser.uid)
-                    .collection('stocklist')
+                    .collection('locationlist')
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return Text("No Stocks");
+                    return Text("No Locations available");
                   }
                   return ListView.builder(
                     // itemExtent: 50.0,
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (context, index) {
-                      return _stockList(
+                      return _locationList(
                           context, snapshot.data.documents[index]);
                     },
                   );
                 }));
   }
 
-  void delete(FirebaseUser firebaseUser, String _symbol) {
+  void delete(FirebaseUser firebaseUser, String _locationid) {
     db
         .collection("user")
         .document(firebaseUser.uid)
-        .collection("stocklist")
-        .document(_symbol)
+        .collection("locationlist")
+        .document(_locationid)
         .delete();
-    db
-        .collection("user")
-        .document(firebaseUser.uid)
-        .collection("dashboard")
-        .document(_symbol)
-        .delete();
+    
   }
 
-  void analysis(FirebaseUser firebaseUser, String _symbol) {
-    db.collection("user").document(firebaseUser.uid).updateData({
-      "analysis-stock": _symbol,
-    }).then((_) {
-      debugPrint("success!");
-    });
-  }
+  // void analysis(FirebaseUser firebaseUser, String _locationid) {
+  //   db.collection("user").document(firebaseUser.uid).updateData({
+  //     "analysis-stock": _locationid,
+  //   }).then((_) {
+  //     debugPrint("success!");
+  //   });
+  // }
 
-  void data(FirebaseUser firebaseUser, String _symbol, String _stockname) {
-    db
-        .collection("user")
-        .document(firebaseUser.uid)
-        .collection("dashboard")
-        .document(_symbol)
-        .setData({
-      "stock-name": _stockname,
-      "stock-symbol": _symbol,
-    }).then((_) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Success!!!'),
-              content: Text('Successfully added stock to dashboard'),
-              actions: <Widget>[
-                FlatButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('OK'))
-              ],
-            );
-          });
-    });
-  }
+  // void data(FirebaseUser firebaseUser, String _locationid, String _stockname) {
+  //   db
+  //       .collection("user")
+  //       .document(firebaseUser.uid)
+  //       .collection("dashboard")
+  //       .document(_locationid)
+  //       .setData({
+  //     "location-name": _stockname,
+  //     "beehiveno": _locationid,
+  //   }).then((_) {
+  //     showDialog(
+  //         context: context,
+  //         builder: (BuildContext context) {
+  //           return AlertDialog(
+  //             title: Text('Success!!!'),
+  //             content: Text('Successfully added stock to dashboard'),
+  //             actions: <Widget>[
+  //               FlatButton(
+  //                   onPressed: () {
+  //                     Navigator.of(context).pop();
+  //                   },
+  //                   child: Text('OK'))
+  //             ],
+  //           );
+  //         });
+  //   });
+  // }
 }

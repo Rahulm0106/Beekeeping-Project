@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_trading_advisor/screens/home.dart';
-import 'package:smart_trading_advisor/screens/signup.dart';
+import 'package:beekeeping_app/screens/home.dart';
+import 'package:beekeeping_app/screens/signup.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/login';

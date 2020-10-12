@@ -1,28 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_trading_advisor/extras/faqs.dart';
-import 'package:smart_trading_advisor/extras/profile.dart';
-import 'package:smart_trading_advisor/extras/terms.dart';
-import 'package:smart_trading_advisor/screens/addstocks.dart';
-import 'package:smart_trading_advisor/screens/favorites.dart';
-import 'package:smart_trading_advisor/screens/home.dart';
-import 'package:smart_trading_advisor/screens/stocklist.dart';
+import 'package:beekeeping_app/extras/faqs.dart';
+import 'package:beekeeping_app/extras/profile.dart';
+import 'package:beekeeping_app/extras/terms.dart';
+import 'package:beekeeping_app/screens/addstocks.dart';
+import 'package:beekeeping_app/screens/favorites.dart';
+import 'package:beekeeping_app/screens/home.dart';
+import 'package:beekeeping_app/screens/stocklist.dart';
 import 'my_flutter_app_icons.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 Widget appBarBuilder(String text) {
-  return AppBar(
-    iconTheme: IconThemeData(color: Colors.black),
-    title: Text(text, style: TextStyle(color: Colors.black)),
-    elevation: 0.0,
-    centerTitle: false,
-    backgroundColor: Colors.white,
-    actions: <Widget>[
-      IconButton(
-          icon: Icon(MyFlutterApp.image2vector),
-          onPressed: () => debugPrint("Tapped"))
-    ],
+  return AppBar(leading: BackButton(
+color: Colors.black
+),
+backgroundColor: Colors.yellow.shade700,
+title: Text(
+text,style: TextStyle(color: Colors.black, fontWeight : FontWeight.bold ) 
+),
+
+    // iconTheme: IconThemeData(color: Colors.black),
+    // title: Text(text, style: TextStyle(color: Colors.black)),
+    // elevation: 0.0,
+    // centerTitle: false,
+    // backgroundColor: Colors.white,
+    // actions: <Widget>[
+    //   IconButton(
+    //       icon: Icon(MyFlutterApp.image2vector),
+    //       onPressed: () => debugPrint("Tapped"))
+    // ],
   );
 }
 
@@ -42,28 +49,28 @@ class BottomNav extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.library_books,
+                Icons.add,
                 color: Colors.white,
               ),
               label: "Stocks"),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.star,
-                color: Colors.white,
-              ),
-              label: "Fav"),
+          // BottomNavigationBarItem(
+          //     icon: Icon(
+          //       Icons.star,
+          //       color: Colors.white,
+          //     ),
+          //     label: "Fav"),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
                 color: Colors.white,
               ),
               label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-              label: "Add"),
+          // BottomNavigationBarItem(
+          //     icon: Icon(
+          //       Icons.add,
+          //       color: Colors.white,
+          //     ),
+          //     label: "Add"),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.menu,
@@ -72,7 +79,7 @@ class BottomNav extends StatelessWidget {
               label: "Menu")
         ],
         onTap: (int index) {
-          if (index == 4) {
+          if (index == 2) {
             showModalBottomSheet(
                 context: context,
                 backgroundColor: Colors.transparent,
@@ -195,16 +202,16 @@ class BottomNav extends StatelessWidget {
                     ),
                   );
                 });
-          } else if (index == 3) {
+          } else if (index == 0) {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => AddStocks()));
-          } else if (index == 2) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+          // } else if (index == 1) {
+          //   Navigator.push(
+          //       context, MaterialPageRoute(builder: (context) => HomePage()));
+           //} else if (index == 1) {
+            // Navigator.push(
+            //     context, MaterialPageRoute(builder: (context) => Favorites()));
           } else if (index == 1) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Favorites()));
-          } else if (index == 0) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => MyStocksList()));
           } else {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_trading_advisor/assets/app_layout.dart';
+import 'package:beekeeping_app/assets/app_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:smart_trading_advisor/screens/home.dart';
+import 'package:beekeeping_app/screens/home.dart';
 
 class AddStocks extends StatefulWidget {
   static const routeName = '/addstocks';
@@ -18,7 +18,7 @@ class _AddStocksState extends State<AddStocks> {
 
   final GlobalKey<FormState> _formKey = GlobalKey();
 
-  String _stockname, _symbol;
+  String _locationname, _beehiveno,_locationid;
 
   checkAuthentication() async {
     _auth.onAuthStateChanged.listen((newUser) {
@@ -56,8 +56,11 @@ class _AddStocksState extends State<AddStocks> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade900,
       resizeToAvoidBottomPadding: true,
-      appBar: appBarBuilder("Add Stocks"),
+      appBar : appBarBuilder('Add Locations'),
+
+
       bottomNavigationBar: BottomNav(),
       body: !isloggedin
           ? Center(child: CircularProgressIndicator())
@@ -73,7 +76,7 @@ class _AddStocksState extends State<AddStocks> {
                     Container(
                       height: 180,
                       child: Image(
-                        image: AssetImage("images/addstock.png"),
+                        image: AssetImage("images/logo.png"),
                         //height: 130,
                         // width: 100,
                         fit: BoxFit.contain,
@@ -91,9 +94,36 @@ class _AddStocksState extends State<AddStocks> {
                               child: TextFormField(
                                   //validator: (){},
                                   decoration: InputDecoration(
-                                      hintText: 'Stock Name',
-                                      prefixIcon: Icon(Icons.money)),
-                                  onSaved: (value) => _stockname = value),
+                                    enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(25.0),
+                                    borderSide: BorderSide(
+                                      color: Colors.yellow.shade700,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                      labelText: 'Location Id',
+                                      labelStyle: TextStyle(color: Colors.yellow.shade700) ,
+                                      prefixIcon: Icon(Icons.location_city, color: Colors.yellow.shade700,)),
+                                  onSaved: (value) => _locationid = value),
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            Container(
+                              child: TextFormField(
+                                  //validator: (){},
+                                  decoration: InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(25.0),
+                                    borderSide: BorderSide(
+                                      color: Colors.yellow.shade700,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                      labelText: 'Location Name',
+                                      labelStyle: TextStyle(color: Colors.yellow.shade700) ,
+                                      prefixIcon: Icon(Icons.location_city, color: Colors.yellow.shade700,)),
+                                  onSaved: (value) => _locationname = value),
                             ),
                             SizedBox(
                               height: 10.0,
@@ -107,10 +137,17 @@ class _AddStocksState extends State<AddStocks> {
                                   //   return null;
                                   // },
                                   decoration: InputDecoration(
-                                    hintText: 'Stock Symbol',
-                                    prefixIcon: Icon(Icons.monetization_on),
+                                    enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(25.0),
+                                    borderSide: BorderSide(
+                                      color: Colors.yellow.shade700,
+                                      width: 2.0,
+                                    ),
                                   ),
-                                  onSaved: (value) => _symbol = value),
+                                    labelText: 'Number of beehives', labelStyle: TextStyle(color: Colors.yellow.shade700),
+                                    prefixIcon: Icon(Icons.confirmation_number, color: Colors.yellow.shade700),
+                                  ),
+                                  onSaved: (value) => _beehiveno = value),
                             ),
                             SizedBox(height: 20),
                             RaisedButton(
@@ -145,17 +182,17 @@ class _AddStocksState extends State<AddStocks> {
                                 }
                               },
                               child: Container(
-                                child: Text('Add Stock',
+                                child: Text('Add Location',
                                     style: TextStyle(
-                                        color: Colors.white,
+                                        color: Colors.black,
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.bold)),
-                                width: 100,
+                                width: 120,
                                 alignment: Alignment.center,
                               ),
-                              color: Colors.black,
+                              color: Colors.yellow.shade700,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius: BorderRadius.circular(25.0),
                               ),
                             ),
                           ],
@@ -163,38 +200,38 @@ class _AddStocksState extends State<AddStocks> {
                       ),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 20,
                     ),
                     Container(
                       child: Text('Things to keep in mind...',
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Colors.yellow.shade700,
                           )),
                     ),
                     SizedBox(
-                      height: 20.0,
+                      height: 10.0,
                     ),
                     Container(
-                      child: Text('Search Google to get stock name and symbol',
+                      child: Text('Search the locations online',
                           style: TextStyle(
                             fontSize: 15.0,
-                            color: Colors.black,
+                            color: Colors.yellow.shade700,
                           )),
                     ),
                     Container(
-                      child: Text('Make sure the symbol is in allcaps',
+                      child: Text('Ensure the legal farms',
                           style: TextStyle(
                             fontSize: 15.0,
-                            color: Colors.black,
+                            color: Colors.yellow.shade700,
                           )),
                     ),
                     Container(
-                      child: Text('Recheck to amke sure there are no mistakes',
+                      child: Text('Recheck to make sure there are no mistakes',
                           style: TextStyle(
                             fontSize: 15.0,
-                            color: Colors.black,
+                            color: Colors.yellow.shade700,
                           )),
                     ),
                   ],
@@ -208,11 +245,12 @@ class _AddStocksState extends State<AddStocks> {
     db
         .collection("user")
         .document(firebaseUser.uid)
-        .collection("stocklist")
-        .document(_symbol)
+        .collection("locationlist")
+        .document(_locationid)
         .setData({
-      "stock-name": _stockname,
-      "stock-symbol": _symbol,
+          "location-id": _locationid,
+      "location-name": _locationname,
+      "location-symbol": _beehiveno,
     }).then((_) {
       showDialog(
           context: context,
