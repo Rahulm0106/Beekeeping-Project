@@ -53,14 +53,13 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   fonts:
-  - family:  MyFlutterApp
+  - family:  Beeicon
     fonts:
-      - asset: fonts/MyFlutterApp.ttf
+      - asset: fonts/Beeicon.ttf
 
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/logo.png
-    - images/addstock.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:beekeeping_app/assets/app_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:beekeeping_app/screens/home.dart';
+
+import 'package:beekeeping_app/Screens/stocklist.dart';
 
 class AddStocks extends StatefulWidget {
   static const routeName = '/addstocks';
@@ -18,13 +19,13 @@ class _AddStocksState extends State<AddStocks> {
 
   final GlobalKey<FormState> _formKey = GlobalKey();
 
-  String _locationname, _beehiveno,_locationid;
+  String _locationname, _beehiveno, _locationid;
 
   checkAuthentication() async {
     _auth.onAuthStateChanged.listen((newUser) {
       if (newUser == null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+            context, MaterialPageRoute(builder: (context) => MyStocksList()));
       }
     });
   }
@@ -58,9 +59,7 @@ class _AddStocksState extends State<AddStocks> {
     return Scaffold(
       backgroundColor: Colors.grey.shade900,
       resizeToAvoidBottomPadding: true,
-      appBar : appBarBuilder('Add Locations'),
-
-
+      appBar: appBarBuilder('Add Locations'),
       bottomNavigationBar: BottomNav(),
       body: !isloggedin
           ? Center(child: CircularProgressIndicator())
@@ -94,16 +93,21 @@ class _AddStocksState extends State<AddStocks> {
                               child: TextFormField(
                                   //validator: (){},
                                   decoration: InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.yellow.shade700,
-                                      width: 2.0,
-                                    ),
-                                  ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(25.0),
+                                        borderSide: BorderSide(
+                                          color: Colors.yellow.shade700,
+                                          width: 2.0,
+                                        ),
+                                      ),
                                       labelText: 'Location Id',
-                                      labelStyle: TextStyle(color: Colors.yellow.shade700) ,
-                                      prefixIcon: Icon(Icons.location_city, color: Colors.yellow.shade700,)),
+                                      labelStyle: TextStyle(
+                                          color: Colors.yellow.shade700),
+                                      prefixIcon: Icon(
+                                        Icons.location_city,
+                                        color: Colors.yellow.shade700,
+                                      )),
                                   onSaved: (value) => _locationid = value),
                             ),
                             SizedBox(
@@ -113,16 +117,21 @@ class _AddStocksState extends State<AddStocks> {
                               child: TextFormField(
                                   //validator: (){},
                                   decoration: InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.yellow.shade700,
-                                      width: 2.0,
-                                    ),
-                                  ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(25.0),
+                                        borderSide: BorderSide(
+                                          color: Colors.yellow.shade700,
+                                          width: 2.0,
+                                        ),
+                                      ),
                                       labelText: 'Location Name',
-                                      labelStyle: TextStyle(color: Colors.yellow.shade700) ,
-                                      prefixIcon: Icon(Icons.location_city, color: Colors.yellow.shade700,)),
+                                      labelStyle: TextStyle(
+                                          color: Colors.yellow.shade700),
+                                      prefixIcon: Icon(
+                                        Icons.location_city,
+                                        color: Colors.yellow.shade700,
+                                      )),
                                   onSaved: (value) => _locationname = value),
                             ),
                             SizedBox(
@@ -138,14 +147,17 @@ class _AddStocksState extends State<AddStocks> {
                                   // },
                                   decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.yellow.shade700,
-                                      width: 2.0,
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderSide: BorderSide(
+                                        color: Colors.yellow.shade700,
+                                        width: 2.0,
+                                      ),
                                     ),
-                                  ),
-                                    labelText: 'Number of beehives', labelStyle: TextStyle(color: Colors.yellow.shade700),
-                                    prefixIcon: Icon(Icons.confirmation_number, color: Colors.yellow.shade700),
+                                    labelText: 'Number of beehives',
+                                    labelStyle: TextStyle(
+                                        color: Colors.yellow.shade700),
+                                    prefixIcon: Icon(Icons.confirmation_number,
+                                        color: Colors.yellow.shade700),
                                   ),
                                   onSaved: (value) => _beehiveno = value),
                             ),
@@ -248,7 +260,7 @@ class _AddStocksState extends State<AddStocks> {
         .collection("locationlist")
         .document(_locationid)
         .setData({
-          "location-id": _locationid,
+      "location-id": _locationid,
       "location-name": _locationname,
       "location-symbol": _beehiveno,
     }).then((_) {

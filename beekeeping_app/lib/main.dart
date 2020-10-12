@@ -1,6 +1,6 @@
 import 'package:beekeeping_app/Screens/stocklist.dart';
 import 'package:flutter/material.dart';
-import 'package:beekeeping_app/screens/home.dart';
+
 import 'package:beekeeping_app/Screens/thankyou.dart';
 
 void main() => runApp(MyApp());

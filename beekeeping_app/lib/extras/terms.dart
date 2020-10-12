@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:beekeeping_app/assets/app_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:beekeeping_app/screens/home.dart';
+import 'package:beekeeping_app/Screens/stocklist.dart';
 
 class Terms extends StatefulWidget {
   static const routeName = '/terms';
@@ -20,7 +20,7 @@ class _TermsState extends State<Terms> {
     _auth.onAuthStateChanged.listen((newUser) {
       if (newUser == null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+            context, MaterialPageRoute(builder: (context) => MyStocksList()));
       }
     });
   }

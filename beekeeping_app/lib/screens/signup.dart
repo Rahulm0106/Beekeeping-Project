@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:beekeeping_app/screens/home.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:beekeeping_app/screens/login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:beekeeping_app/screens/thankyou.dart';
+import 'package:beekeeping_app/Screens/stocklist.dart';
 
 class SignupScreen extends StatefulWidget {
   static const routeName = '/signup';
@@ -22,7 +23,7 @@ class _SignupScreenState extends State<SignupScreen> {
     _auth.onAuthStateChanged.listen((user) async {
       if (user != null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+            context, MaterialPageRoute(builder: (context) => MyStocksList()));
       }
     });
   }

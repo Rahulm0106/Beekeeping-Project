@@ -4,21 +4,16 @@ import 'package:beekeeping_app/extras/faqs.dart';
 import 'package:beekeeping_app/extras/profile.dart';
 import 'package:beekeeping_app/extras/terms.dart';
 import 'package:beekeeping_app/screens/addstocks.dart';
-import 'package:beekeeping_app/screens/favorites.dart';
-import 'package:beekeeping_app/screens/home.dart';
 import 'package:beekeeping_app/screens/stocklist.dart';
-import 'my_flutter_app_icons.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 Widget appBarBuilder(String text) {
-  return AppBar(leading: BackButton(
-color: Colors.black
-),
-backgroundColor: Colors.yellow.shade700,
-title: Text(
-text,style: TextStyle(color: Colors.black, fontWeight : FontWeight.bold ) 
-),
+  return AppBar(
+    leading: BackButton(color: Colors.black),
+    backgroundColor: Colors.yellow.shade700,
+    title: Text(text,
+        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
 
     // iconTheme: IconThemeData(color: Colors.black),
     // title: Text(text, style: TextStyle(color: Colors.black)),
@@ -205,10 +200,10 @@ class BottomNav extends StatelessWidget {
           } else if (index == 0) {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => AddStocks()));
-          // } else if (index == 1) {
-          //   Navigator.push(
-          //       context, MaterialPageRoute(builder: (context) => HomePage()));
-           //} else if (index == 1) {
+            // } else if (index == 1) {
+            //   Navigator.push(
+            //       context, MaterialPageRoute(builder: (context) => HomePage()));
+            //} else if (index == 1) {
             // Navigator.push(
             //     context, MaterialPageRoute(builder: (context) => Favorites()));
           } else if (index == 1) {

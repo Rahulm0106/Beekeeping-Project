@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:beekeeping_app/analysis/analysis.dart';
 import 'package:beekeeping_app/assets/app_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:beekeeping_app/screens/home.dart';
+import 'package:beekeeping_app/assets/beeicon_icons.dart';
 
 class MyStocksList extends StatefulWidget {
   static const routeName = '/stocklist';
@@ -21,7 +20,7 @@ class _MyStocksListState extends State<MyStocksList> {
     _auth.onAuthStateChanged.listen((newUser) {
       if (newUser == null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+            context, MaterialPageRoute(builder: (context) => MyStocksList()));
       }
     });
   }
@@ -53,9 +52,9 @@ class _MyStocksListState extends State<MyStocksList> {
   Widget _locationList(BuildContext context, DocumentSnapshot document) {
     return ListTile(
       leading: IconButton(
-          icon: Icon(Icons.analytics_outlined),
-          onPressed: () {
-          },),
+        icon: Icon(Beeicon.beeicon),
+        onPressed: () {},
+      ),
       title: Text(document['location-name']),
       subtitle: Text(document['location-symbol']),
       trailing: IconButton(
@@ -85,7 +84,7 @@ class _MyStocksListState extends State<MyStocksList> {
           }
         },
       ),
-      onTap: (){}, 
+      onTap: () {},
     );
   }
 
@@ -124,7 +123,6 @@ class _MyStocksListState extends State<MyStocksList> {
         .collection("locationlist")
         .document(_locationid)
         .delete();
-    
   }
 
   // void analysis(FirebaseUser firebaseUser, String _locationid) {
