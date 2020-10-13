@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:beekeeping_app/screens/signup.dart';
-import 'package:beekeeping_app/Screens/stocklist.dart';
 import 'package:beekeeping_app/Screens/stocklist.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String _email, _password;
 
-  bool _isHidden = true;
+  //bool _isHidden = true;
 
   checkAuthentication() async {
     _auth.onAuthStateChanged.listen((user) {
@@ -102,20 +100,21 @@ class _LoginScreenState extends State<LoginScreen> {
                                 return null;
                               },
                               decoration: InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.yellow.shade700,
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                  labelText: 'Password',
-                                  labelStyle:
-                                      TextStyle(color: Colors.yellow.shade700),
-                                  prefixIcon: Icon(
-                                    Icons.lock,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  borderSide: BorderSide(
                                     color: Colors.yellow.shade700,
-                                  )),
+                                    width: 2.0,
+                                  ),
+                                ),
+                                labelText: 'Password',
+                                labelStyle:
+                                    TextStyle(color: Colors.yellow.shade700),
+                                prefixIcon: Icon(
+                                  Icons.lock,
+                                  color: Colors.yellow.shade700,
+                                ),
+                              ),
                               obscureText: true,
                               onSaved: (value) => _password = value),
                         ),

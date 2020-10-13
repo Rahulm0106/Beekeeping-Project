@@ -1,3 +1,4 @@
+import 'package:beekeeping_app/screens/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:beekeeping_app/assets/app_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,7 +21,7 @@ class _MyStocksListState extends State<MyStocksList> {
     _auth.onAuthStateChanged.listen((newUser) {
       if (newUser == null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyStocksList()));
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
       }
     });
   }
