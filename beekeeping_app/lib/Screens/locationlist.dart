@@ -5,13 +5,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:beekeeping_app/assets/beeicon_icons.dart';
 
-class MyStocksList extends StatefulWidget {
-  static const routeName = '/stocklist';
+class MyLocationslist extends StatefulWidget {
+  static const routeName = '/locationlist';
   @override
-  _MyStocksListState createState() => _MyStocksListState();
+  _MyLocationslistState createState() => _MyLocationslistState();
 }
 
-class _MyStocksListState extends State<MyStocksList> {
+class _MyLocationslistState extends State<MyLocationslist> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Firestore db = Firestore.instance;
   FirebaseUser newUser;
@@ -53,13 +53,13 @@ class _MyStocksListState extends State<MyStocksList> {
   Widget _locationList(BuildContext context, DocumentSnapshot document) {
     return ListTile(
       leading: IconButton(
-        icon: Icon(Beeicon.beeicon),
+        icon: Icon(Beeicon.beeicon, color: Colors.yellow.shade700,),
         onPressed: () {},
       ),
-      title: Text(document['location-name']),
-      subtitle: Text(document['location-symbol']),
+      title: Text(document['location-name'],style: TextStyle(color: Colors.yellow.shade700, fontWeight: FontWeight.bold),),
+      subtitle: Text(document['location-symbol'], style : TextStyle(color : Colors.yellow.shade700, fontWeight: FontWeight.bold)),
       trailing: IconButton(
-        icon: Icon(Icons.delete),
+        icon: Icon(Icons.delete, color: Colors.yellow.shade700,),
         onPressed: () async {
           try {
             if (newUser != null) {
@@ -94,6 +94,7 @@ class _MyStocksListState extends State<MyStocksList> {
     return !isloggedin
         ? Center(child: CircularProgressIndicator())
         : Scaffold(
+            backgroundColor: Colors.grey.shade900,
             appBar: appBarBuilder("My Locations"),
             bottomNavigationBar: BottomNav(),
             body: StreamBuilder(
@@ -128,20 +129,20 @@ class _MyStocksListState extends State<MyStocksList> {
 
   // void analysis(FirebaseUser firebaseUser, String _locationid) {
   //   db.collection("user").document(firebaseUser.uid).updateData({
-  //     "analysis-stock": _locationid,
+  //     "analysis-location": _locationid,
   //   }).then((_) {
   //     debugPrint("success!");
   //   });
   // }
 
-  // void data(FirebaseUser firebaseUser, String _locationid, String _stockname) {
+  // void data(FirebaseUser firebaseUser, String _locationid, String _locationname) {
   //   db
   //       .collection("user")
   //       .document(firebaseUser.uid)
   //       .collection("dashboard")
   //       .document(_locationid)
   //       .setData({
-  //     "location-name": _stockname,
+  //     "location-name": _locationname,
   //     "beehiveno": _locationid,
   //   }).then((_) {
   //     showDialog(
@@ -149,7 +150,7 @@ class _MyStocksListState extends State<MyStocksList> {
   //         builder: (BuildContext context) {
   //           return AlertDialog(
   //             title: Text('Success!!!'),
-  //             content: Text('Successfully added stock to dashboard'),
+  //             content: Text('Successfully added location to dashboard'),
   //             actions: <Widget>[
   //               FlatButton(
   //                   onPressed: () {

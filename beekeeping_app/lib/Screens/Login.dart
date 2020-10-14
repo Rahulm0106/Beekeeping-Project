@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:beekeeping_app/screens/signup.dart';
-import 'package:beekeeping_app/Screens/stocklist.dart';
+import 'package:beekeeping_app/Screens/locationlist.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/login';
@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
     _auth.onAuthStateChanged.listen((user) {
       if (user != null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyStocksList()));
+            context, MaterialPageRoute(builder: (context) => MyLocationslist()));
       }
     });
   }
@@ -193,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              MyStocksList()));
+                                              MyLocationslist()));
                                 }
                               } catch (e) {
                                 showDialog(

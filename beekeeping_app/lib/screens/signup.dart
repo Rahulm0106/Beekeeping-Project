@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:beekeeping_app/screens/login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:beekeeping_app/screens/thankyou.dart';
-import 'package:beekeeping_app/Screens/stocklist.dart';
+import 'package:beekeeping_app/Screens/locationlist.dart';
 
 class SignupScreen extends StatefulWidget {
   static const routeName = '/signup';
@@ -23,7 +23,7 @@ class _SignupScreenState extends State<SignupScreen> {
     _auth.onAuthStateChanged.listen((user) async {
       if (user != null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyStocksList()));
+            context, MaterialPageRoute(builder: (context) => MyLocationslist()));
       }
     });
   }
@@ -46,11 +46,11 @@ class _SignupScreenState extends State<SignupScreen> {
             child: Column(
               children: <Widget>[
                 Container(
-                  height: 400,
+                  height: 300,
                   child: Image(
                     image: AssetImage("images/logo.png"),
-                    height: 100,
-                    width: 100,
+                    height: 200,
+                    width: 200,
                     fit: BoxFit.contain,
                   ),
                 ),

@@ -1,4 +1,4 @@
-import 'package:beekeeping_app/Screens/stocklist.dart';
+import 'package:beekeeping_app/Screens/locationlist.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Beekeeping App',
       theme: ThemeData(primaryColor: Colors.black),
-      home: MyStocksList(),
+      home: MyLocationslist(),
     );
   }
 }

@@ -3,15 +3,15 @@ import 'package:beekeeping_app/assets/app_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:beekeeping_app/Screens/stocklist.dart';
+import 'package:beekeeping_app/Screens/locationlist.dart';
 
-class AddStocks extends StatefulWidget {
-  static const routeName = '/addstocks';
+class Addlocation extends StatefulWidget {
+  static const routeName = '/addlocation';
   @override
-  _AddStocksState createState() => _AddStocksState();
+  _AddlocationState createState() => _AddlocationState();
 }
 
-class _AddStocksState extends State<AddStocks> {
+class _AddlocationState extends State<Addlocation> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final db = Firestore.instance;
   FirebaseUser newUser;
@@ -25,7 +25,7 @@ class _AddStocksState extends State<AddStocks> {
     _auth.onAuthStateChanged.listen((newUser) {
       if (newUser == null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyStocksList()));
+            context, MaterialPageRoute(builder: (context) => MyLocationslist()));
       }
     });
   }
@@ -70,10 +70,10 @@ class _AddStocksState extends State<AddStocks> {
                 child: Column(
                   children: <Widget>[
                     SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     Container(
-                      height: 180,
+                      height: 150,
                       child: Image(
                         image: AssetImage("images/logo.png"),
                         //height: 130,
@@ -82,7 +82,7 @@ class _AddStocksState extends State<AddStocks> {
                       ),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 35,
                     ),
                     Container(
                       child: Form(
@@ -91,6 +91,8 @@ class _AddStocksState extends State<AddStocks> {
                           children: <Widget>[
                             Container(
                               child: TextFormField(
+                                cursorColor: Colors.white,
+                              style: TextStyle(color: Colors.white),
                                   //validator: (){},
                                   decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
@@ -115,6 +117,8 @@ class _AddStocksState extends State<AddStocks> {
                             ),
                             Container(
                               child: TextFormField(
+                                cursorColor: Colors.white,
+                              style: TextStyle(color: Colors.white),
                                   //validator: (){},
                                   decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
@@ -139,6 +143,8 @@ class _AddStocksState extends State<AddStocks> {
                             ),
                             Container(
                               child: TextFormField(
+                                cursorColor: Colors.white,
+                              style: TextStyle(color: Colors.white),
                                   // validator: (String value) {
                                   //   if (value.isEmpty || value.length < 8) {
                                   //     return 'invalid password';
@@ -230,6 +236,7 @@ class _AddStocksState extends State<AddStocks> {
                           style: TextStyle(
                             fontSize: 15.0,
                             color: Colors.yellow.shade700,
+                            fontWeight: FontWeight.bold,
                           )),
                     ),
                     Container(
@@ -237,6 +244,7 @@ class _AddStocksState extends State<AddStocks> {
                           style: TextStyle(
                             fontSize: 15.0,
                             color: Colors.yellow.shade700,
+                            fontWeight: FontWeight.bold,
                           )),
                     ),
                     Container(
@@ -244,6 +252,7 @@ class _AddStocksState extends State<AddStocks> {
                           style: TextStyle(
                             fontSize: 15.0,
                             color: Colors.yellow.shade700,
+                            fontWeight: FontWeight.bold,
                           )),
                     ),
                   ],
@@ -269,7 +278,7 @@ class _AddStocksState extends State<AddStocks> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text('Success!!!'),
-              content: Text('Successfully added stock to stock list.'),
+              content: Text('Location added successfully.'),
               actions: <Widget>[
                 FlatButton(
                     onPressed: () {

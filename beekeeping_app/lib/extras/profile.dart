@@ -52,7 +52,8 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarBuilder("Dashboard"),
+      backgroundColor: Colors.grey.shade900,
+      appBar: appBarBuilder("Profile"),
       body: Container(
         child: !isloggedin
             ? Center(child: CircularProgressIndicator())
@@ -93,14 +94,14 @@ class _ProfileState extends State<Profile> {
                   style: TextStyle(
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                      color: Colors.white),
                   children: <TextSpan>[
                 TextSpan(
                     text: '${documentFields['last-name']}',
                     style: TextStyle(
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromRGBO(62, 72, 184, 1.0)))
+                        color: Colors.yellow.shade700))
               ]));
         } else {
           return Text('Some Error');

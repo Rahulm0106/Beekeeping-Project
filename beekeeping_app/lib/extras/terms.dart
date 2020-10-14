@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:beekeeping_app/assets/app_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:beekeeping_app/Screens/stocklist.dart';
+import 'package:beekeeping_app/Screens/locationlist.dart';
 
 class Terms extends StatefulWidget {
   static const routeName = '/terms';
@@ -20,7 +20,7 @@ class _TermsState extends State<Terms> {
     _auth.onAuthStateChanged.listen((newUser) {
       if (newUser == null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyStocksList()));
+            context, MaterialPageRoute(builder: (context) => MyLocationslist()));
       }
     });
   }
@@ -52,6 +52,7 @@ class _TermsState extends State<Terms> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade900,
       appBar: appBarBuilder("Terms & Conditions"),
       bottomNavigationBar: BottomNav(),
       body: !isloggedin
@@ -111,7 +112,7 @@ class _TermsState extends State<Terms> {
       child: Text(b,
           style: TextStyle(
             fontSize: 15.0,
-            color: Colors.black,
+            color: Colors.yellow.shade700,
           )),
     );
   }
@@ -122,7 +123,7 @@ class _TermsState extends State<Terms> {
           style: TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.yellow.shade700,
           )),
     );
   }

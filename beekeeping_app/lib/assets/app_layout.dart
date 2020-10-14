@@ -1,10 +1,11 @@
+import 'package:beekeeping_app/Screens/addlocation.dart';
+import 'package:beekeeping_app/Screens/locationlist.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:beekeeping_app/extras/faqs.dart';
 import 'package:beekeeping_app/extras/profile.dart';
 import 'package:beekeeping_app/extras/terms.dart';
-import 'package:beekeeping_app/screens/addstocks.dart';
-import 'package:beekeeping_app/screens/stocklist.dart';
+
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -37,7 +38,7 @@ class BottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: BottomNavigationBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.yellow.shade700,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -45,9 +46,9 @@ class BottomNav extends StatelessWidget {
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.add,
-                color: Colors.white,
+                color: Colors.black,
               ),
-              label: "Stocks"),
+              label: "Locations"),
           // BottomNavigationBarItem(
           //     icon: Icon(
           //       Icons.star,
@@ -57,7 +58,7 @@ class BottomNav extends StatelessWidget {
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
-                color: Colors.white,
+                color: Colors.black,
               ),
               label: "Home"),
           // BottomNavigationBarItem(
@@ -69,7 +70,7 @@ class BottomNav extends StatelessWidget {
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.menu,
-                color: Colors.white,
+                color: Colors.black,
               ),
               label: "Menu")
         ],
@@ -77,7 +78,7 @@ class BottomNav extends StatelessWidget {
           if (index == 2) {
             showModalBottomSheet(
                 context: context,
-                backgroundColor: Colors.transparent,
+                backgroundColor: Colors.black,
                 builder: (BuildContext context) {
                   return Container(
                     decoration: BoxDecoration(
@@ -99,9 +100,9 @@ class BottomNav extends StatelessWidget {
                                       topLeft: Radius.circular(16.0),
                                       topRight: Radius.circular(16.0),
                                     ),
-                                    color: Colors.grey,
+                                    color: Colors.black38,
                                     border: Border.all(
-                                      color: Colors.black,
+                                      color: Colors.grey.shade900,
                                       width: 4,
                                     )),
                                 child: Stack(
@@ -116,11 +117,11 @@ class BottomNav extends StatelessWidget {
                                             title: Text(
                                               "Profile",
                                               style: TextStyle(
-                                                  color: Colors.black),
+                                                  color: Colors.yellow.shade700),
                                             ),
                                             leading: Icon(
                                               Icons.person,
-                                              color: Colors.black,
+                                              color: Colors.yellow.shade700,
                                             ),
                                             onTap: () {
                                               debugPrint("Profile");
@@ -135,11 +136,11 @@ class BottomNav extends StatelessWidget {
                                             title: Text(
                                               "FAQs",
                                               style: TextStyle(
-                                                  color: Colors.black),
+                                                  color: Colors.yellow.shade700),
                                             ),
                                             leading: Icon(
                                               Icons.question_answer,
-                                              color: Colors.black,
+                                              color: Colors.yellow.shade700,
                                             ),
                                             onTap: () {
                                               debugPrint("FAQ");
@@ -154,11 +155,11 @@ class BottomNav extends StatelessWidget {
                                             title: Text(
                                               "Terms & Conditions",
                                               style: TextStyle(
-                                                  color: Colors.black),
+                                                  color: Colors.yellow.shade700),
                                             ),
                                             leading: Icon(
                                               Icons.list,
-                                              color: Colors.black,
+                                              color: Colors.yellow.shade700,
                                             ),
                                             onTap: () {
                                               debugPrint("T&C");
@@ -173,11 +174,11 @@ class BottomNav extends StatelessWidget {
                                             title: Text(
                                               "Logout",
                                               style: TextStyle(
-                                                  color: Colors.black),
+                                                  color: Colors.yellow.shade700),
                                             ),
                                             leading: Icon(
                                               Icons.logout,
-                                              color: Colors.black,
+                                              color: Colors.yellow.shade700,
                                             ),
                                             onTap: () async {
                                               debugPrint("Logout");
@@ -199,7 +200,7 @@ class BottomNav extends StatelessWidget {
                 });
           } else if (index == 0) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AddStocks()));
+                context, MaterialPageRoute(builder: (context) => Addlocation()));
             // } else if (index == 1) {
             //   Navigator.push(
             //       context, MaterialPageRoute(builder: (context) => HomePage()));
@@ -208,7 +209,7 @@ class BottomNav extends StatelessWidget {
             //     context, MaterialPageRoute(builder: (context) => Favorites()));
           } else if (index == 1) {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MyStocksList()));
+                MaterialPageRoute(builder: (context) => MyLocationslist()));
           } else {
             debugPrint("Tapped Item: $index");
           }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:beekeeping_app/assets/app_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:beekeeping_app/Screens/stocklist.dart';
+import 'package:beekeeping_app/Screens/locationlist.dart';
 
 class FAQs extends StatefulWidget {
   static const routeName = '/faqs';
@@ -20,7 +20,7 @@ class _FAQsState extends State<FAQs> {
     _auth.onAuthStateChanged.listen((newUser) {
       if (newUser == null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyStocksList()));
+            context, MaterialPageRoute(builder: (context) => MyLocationslist()));
       }
     });
   }
@@ -52,6 +52,7 @@ class _FAQsState extends State<FAQs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade900,
       appBar: appBarBuilder("FAQs"),
       bottomNavigationBar: BottomNav(),
       body: !isloggedin
@@ -111,7 +112,7 @@ class _FAQsState extends State<FAQs> {
       child: Text(a,
           style: TextStyle(
             fontSize: 15.0,
-            color: Colors.black,
+            color: Colors.yellow.shade700,
           )),
     );
   }
@@ -122,7 +123,7 @@ class _FAQsState extends State<FAQs> {
           style: TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.yellow.shade700,
           )),
     );
   }

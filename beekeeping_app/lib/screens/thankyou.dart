@@ -51,6 +51,7 @@ class _ThankyouState extends State<Thankyou> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade900,
       body: Container(
         child: !isloggedin
             ? Center(child: CircularProgressIndicator())
@@ -58,11 +59,11 @@ class _ThankyouState extends State<Thankyou> {
                 children: <Widget>[
                   SizedBox(height: 40.0),
                   Container(
-                    height: 300,
+                    height: 200,
                     child: Image(
                       image: AssetImage("images/logo.png"),
-                      height: 100,
-                      width: 100,
+                      height: 210,
+                      width: 200,
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -74,7 +75,7 @@ class _ThankyouState extends State<Thankyou> {
                     padding: EdgeInsets.all(10),
                   ),
                   SizedBox(
-                    height: 140,
+                    height: 30,
                   ),
                   RaisedButton(
                     padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
@@ -83,10 +84,10 @@ class _ThankyouState extends State<Thankyou> {
                     },
                     child: Text('Login',
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold)),
-                    color: Colors.black,
+                    color: Colors.yellow.shade700,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
@@ -109,8 +110,11 @@ class _ThankyouState extends State<Thankyou> {
                   style: TextStyle(
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: Colors.white,
                   )),
+            ),
+            SizedBox(
+              height : 10,
             ),
             Container(
               child: Text(
@@ -118,30 +122,31 @@ class _ThankyouState extends State<Thankyou> {
                 style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(62, 72, 184, 1.0)),
+                    color: Colors.yellow.shade700),
               ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Container(
-              child: Text(
-                  'Welcome to Smart Trading App, Thank You for signing up!!!',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  )),
             ),
             SizedBox(
               height: 20.0,
             ),
             Container(
-              child: Text('Login again to get predictions...',
+              child: Text(
+                  'Welcome to Beehive Monitoring App, Thank You for signing up!!!',
                   style: TextStyle(
                     fontSize: 20.0,
-                    color: Colors.black,
-                  )),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),textAlign: TextAlign.center,),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              child: Text('Login again to make smarter decision...',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),textAlign: TextAlign.center,),
             ),
           ]);
         } else {
