@@ -1,3 +1,4 @@
+import 'package:beekeeping_app/Screens/graphscreen.dart';
 import 'package:beekeeping_app/screens/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:beekeeping_app/assets/app_layout.dart';
@@ -85,7 +86,14 @@ class _MyLocationslistState extends State<MyLocationslist> {
           }
         },
       ),
-      onTap: () {},
+      onTap: () {
+                                              
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LineCharts()));
+                                            },
     );
   }
 
