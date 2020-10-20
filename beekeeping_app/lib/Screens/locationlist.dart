@@ -1,15 +1,18 @@
+import 'package:beekeeping_app/Screens/graphscreen.dart';
+import 'package:beekeeping_app/screens/Login.dart';
 import 'package:flutter/material.dart';
+import 'package:beekeeping_app/assets/app_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:beekeeping_app/screens/home.dart';
+import 'package:beekeeping_app/assets/beeicon_icons.dart';
 
-class MyLocationsList extends StatefulWidget {
-  static const routeName = '/locations';
+class MyLocationslist extends StatefulWidget {
+  static const routeName = '/locationlist';
   @override
-  _MyLocationsListState createState() => _MyLocationsListState();
+  _MyLocationslistState createState() => _MyLocationslistState();
 }
 
-class _MyLocationsListState extends State<MyLocationsList> {
+class _MyLocationslistState extends State<MyLocationslist> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Firestore db = Firestore.instance;
   FirebaseUser newUser;
@@ -19,7 +22,7 @@ class _MyLocationsListState extends State<MyLocationsList> {
     _auth.onAuthStateChanged.listen((newUser) {
       if (newUser == null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
       }
     });
   }
@@ -51,41 +54,18 @@ class _MyLocationsListState extends State<MyLocationsList> {
   Widget _locationList(BuildContext context, DocumentSnapshot document) {
     return ListTile(
       leading: IconButton(
-          icon: Icon(Icons.analytics_outlined),
-          onPressed: () async {
-            try {
-              if (newUser != null) {
-                // var firebaseUser = await _auth.currentUser();
-                // data(firebaseUser, document['beehive-no'],
-                //     document['location-name']);
-              }
-            } catch (e) {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Error!!!'),
-                      content: Text('$e'),
-                      actions: <Widget>[
-                        FlatButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text('OK'))
-                      ],
-                    );
-                  });
-            }
-          }),
-      title: Text(document['location-name']),
-      subtitle: Text(document['beehive-no']),
+        icon: Icon(Beeicon.beeicon, color: Colors.yellow.shade700,),
+        onPressed: () {},
+      ),
+      title: Text(document['location-name'],style: TextStyle(color: Colors.yellow.shade700, fontWeight: FontWeight.bold),),
+      subtitle: Text(document['location-symbol'], style : TextStyle(color : Colors.yellow.shade700, fontWeight: FontWeight.bold)),
       trailing: IconButton(
-        icon: Icon(Icons.delete),
+        icon: Icon(Icons.delete, color: Colors.yellow.shade700,),
         onPressed: () async {
           try {
             if (newUser != null) {
               var firebaseUser = await _auth.currentUser();
-              delete(firebaseUser, document['beehive-no']);
+              delete(firebaseUser, document['location-id']);
             }
           } catch (e) {
             showDialog(
@@ -106,32 +86,14 @@ class _MyLocationsListState extends State<MyLocationsList> {
           }
         },
       ),
-      onTap: () async {
-        try {
-          if (newUser != null) {
-            var firebaseUser = await _auth.currentUser();
-            analysis(firebaseUser, document['beehive-no']);
-            // Navigator.push(
-            //     context, MaterialPageRoute(builder: (context) => Analysis()));
-          }
-        } catch (e) {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text('Error!!!'),
-                  content: Text('$e'),
-                  actions: <Widget>[
-                    FlatButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Text('OK'))
-                  ],
-                );
-              });
-        }
-      },
+      onTap: () {
+                                              
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LineCharts()));
+                                            },
     );
   }
 
@@ -140,17 +102,18 @@ class _MyLocationsListState extends State<MyLocationsList> {
     return !isloggedin
         ? Center(child: CircularProgressIndicator())
         : Scaffold(
-            // appBar: appBarBuilder("My Stocks List"),
-            // bottomNavigationBar: BottomNav(),
+            backgroundColor: Colors.grey.shade900,
+            appBar: appBarBuilder("My Locations"),
+            bottomNavigationBar: BottomNav(),
             body: StreamBuilder(
                 stream: db
                     .collection('user')
                     .document(newUser.uid)
-                    .collection('locations')
+                    .collection('locationlist')
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return Text("No Locations");
+                    return Text("No Locations available");
                   }
                   return ListView.builder(
                     // itemExtent: 50.0,
@@ -163,45 +126,39 @@ class _MyLocationsListState extends State<MyLocationsList> {
                 }));
   }
 
-  void delete(FirebaseUser firebaseUser, String _symbol) {
+  void delete(FirebaseUser firebaseUser, String _locationid) {
     db
         .collection("user")
         .document(firebaseUser.uid)
-        .collection("locations")
-        .document(_symbol)
+        .collection("locationlist")
+        .document(_locationid)
         .delete();
-    // db
-        // .collection("user")
-        // .document(firebaseUser.uid)
-        // .collection("dashboard")
-        // .document(_symbol)
-        // .delete();
   }
 
-  void analysis(FirebaseUser firebaseUser, String _symbol) {
-    db.collection("user").document(firebaseUser.uid).updateData({
-      "analysis-location": _symbol,
-    }).then((_) {
-      debugPrint("success!");
-    });
-  }
+  // void analysis(FirebaseUser firebaseUser, String _locationid) {
+  //   db.collection("user").document(firebaseUser.uid).updateData({
+  //     "analysis-location": _locationid,
+  //   }).then((_) {
+  //     debugPrint("success!");
+  //   });
+  // }
 
-  // void data(FirebaseUser firebaseUser, String _symbol, String _stockname) {
+  // void data(FirebaseUser firebaseUser, String _locationid, String _locationname) {
   //   db
   //       .collection("user")
   //       .document(firebaseUser.uid)
   //       .collection("dashboard")
-  //       .document(_symbol)
+  //       .document(_locationid)
   //       .setData({
-  //     "location-name": _stockname,
-  //     "beehive-no": _symbol,
+  //     "location-name": _locationname,
+  //     "beehiveno": _locationid,
   //   }).then((_) {
   //     showDialog(
   //         context: context,
   //         builder: (BuildContext context) {
   //           return AlertDialog(
   //             title: Text('Success!!!'),
-  //             content: Text('Successfully added stock to dashboard'),
+  //             content: Text('Successfully added location to dashboard'),
   //             actions: <Widget>[
   //               FlatButton(
   //                   onPressed: () {
