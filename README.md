@@ -16,12 +16,12 @@ This repository contains the code for the 3rd Semester Project for [VIT Bhopal U
 * Registration No.: 19MIM10067
 * [GitHub Profie](https://github.com/kprakhar27/)
 
-### Ashwin R
+### Yash Sharma
 * Email ID - yash.sharma2019@vitbhopal.ac.in)
 * Registration No.: 19MIM10068
 * [GitHub Profie](https://github.com/kprakhar27/)
 
-### Faizan Mirza
+### Shivam Bajpeyi
 * Email ID - shivam.bajpeyi2019@vitbhopal.ac.in)
 * Registration No.: 19MIM10081
 * [GitHub Profie](https://github.com/kprakhar27/)
