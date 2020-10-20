@@ -1,4 +1,8 @@
 
+
+import 'package:beekeeping_app/assets/humidity_drop_icons.dart';
+import 'package:beekeeping_app/assets/weight_final_icons.dart';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:beekeeping_app/assets/app_layout.dart';
@@ -8,7 +12,7 @@ class LineCharts extends StatelessWidget {
   Widget build(BuildContext context) {
     
     const tempTextStyle =
-    TextStyle(fontSize: 18, color: Colors.yellow, fontWeight: FontWeight.bold);
+    TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold);
  
     
      return Scaffold(
@@ -34,7 +38,7 @@ class LineCharts extends StatelessWidget {
             // height: auto,
             // width: 350,
             child: Center(
-              child: Row(
+              child: Column(
                 // children: [Center(
                 // child: Column(
       // mainAxisSize: MainAxisSize.min,
@@ -42,25 +46,25 @@ class LineCharts extends StatelessWidget {
       // crossAxisAlignment: CrossAxisAlignment.center,
       children: [
          Container(
-           margin: const EdgeInsets.all(8),
+           margin: const EdgeInsets.all(10),
            child: Icon(Icons.alarm, color: Colors.black,size: 30, )),
         Container(
                 
                 child: Text(
-                  "If temperature is less than 35°C:",
+                  "If temperature is more than 32°C,",
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
         ),
         Container(
-                margin: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(15),
                 child: Text(
                   "Put wet gummy bags",
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
@@ -85,7 +89,7 @@ class LineCharts extends StatelessWidget {
             // child: Text(" Current Temperature ",style: TextStyle(color: Colors.yellow.shade700, fontSize: 20,fontWeight: FontWeight.bold),textAlign: TextAlign.center,)
 
         ),
-                      SizedBox(height: 20,),
+                      SizedBox(height: 30,),
                       SizedBox(
             height : 400,
             width: 350,
@@ -103,8 +107,8 @@ class LineCharts extends StatelessWidget {
                 // ],
                 
                 spots: [
-                  FlSpot(0, 32),
-                  FlSpot(10, 35),
+                  FlSpot(32, 0),
+                  FlSpot(35, 10),
                   // FlSpot(2, 3),
                   // FlSpot(3, 3),
                   // FlSpot(4, 5),
@@ -133,8 +137,8 @@ class LineCharts extends StatelessWidget {
                 ),
               ),
             ],
-            minY: 25,
-            minX: 0,
+            minY: 0,
+            minX: 25,
             
             titlesData: FlTitlesData(
               bottomTitles: SideTitles(
@@ -186,14 +190,14 @@ class LineCharts extends StatelessWidget {
         ),
         )),
         SizedBox(
-            height:20
+            height:30
         ),
         Container(
           alignment: Alignment.center,
             // height: auto,
             // width: 350,
             child: Center(
-              child: Row(
+              child: Column(
                 // children: [Center(
                 // child: Column(
       // mainAxisSize: MainAxisSize.min,
@@ -201,21 +205,21 @@ class LineCharts extends StatelessWidget {
       // crossAxisAlignment: CrossAxisAlignment.center,
       children: [
          Container(
-           margin: const EdgeInsets.all(8),
-           child: Icon(Icons.wb_sunny, color: Colors.black,size: 30, )),
+           margin: const EdgeInsets.all(10),
+           child: Icon(Icons.wb_sunny, color: Colors.black,size: 40, )),
         Container(
                 
                 child: Text(
-                  "Current Temperature:",
+                  "Current Temperature",
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
         ),
         Container(
-                margin: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(15),
                 child: Text(
                   "35 °C",
                   style: TextStyle(
@@ -253,7 +257,7 @@ class LineCharts extends StatelessWidget {
             // height: auto,
             // width: 350,
             child: Center(
-              child: Row(
+              child: Column(
                 // children: [Center(
                 // child: Column(
       // mainAxisSize: MainAxisSize.min,
@@ -261,21 +265,21 @@ class LineCharts extends StatelessWidget {
       // crossAxisAlignment: CrossAxisAlignment.center,
       children: [
          Container(
-           margin: const EdgeInsets.all(8),
-           child: Icon(Icons.wb_sunny, color: Colors.black,size: 30, )),
+           margin: const EdgeInsets.all(10),
+           child: Icon(Humidity_drop.water_drop, size: 30, )),
         Container(
                 
                 child: Text(
-                  "Current Humidity:",
+                  "Current Humidity",
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
         ),
         Container(
-                margin: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(15),
                 child: Text(
                   "60 %",
                   style: TextStyle(
@@ -312,7 +316,7 @@ class LineCharts extends StatelessWidget {
             // height: auto,
             // width: 350,
             child: Center(
-              child: Row(
+              child: Column(
                 // children: [Center(
                 // child: Column(
       // mainAxisSize: MainAxisSize.min,
@@ -320,23 +324,23 @@ class LineCharts extends StatelessWidget {
       // crossAxisAlignment: CrossAxisAlignment.center,
       children: [
          Container(
-           margin: const EdgeInsets.all(8),
-           child: Icon(Icons.wb_sunny, color: Colors.black,size: 30, )),
+           margin: const EdgeInsets.all(10),
+           child: Icon(Weight_final.weight_final, color: Colors.black,size: 30, )),
         Container(
                 
                 child: Text(
-                  "Weight of box:",
+                  "Weight of box",
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
         ),
         Container(
-                margin: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(15),
                 child: Text(
-                  "15 kg",
+                  "4.5 kg",
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
