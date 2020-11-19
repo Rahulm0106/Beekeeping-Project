@@ -1,6 +1,6 @@
 # VIT_Sem-3_Project
 
-# Beekeeping-Project
+# Smart Monitoring System for Beekeeping Farms
 
 This repository contains the code for the 3rd Semester Project for [VIT Bhopal University](https://vitbhopal.ac.in/)
 #### To know more about the project read Project_proposal pdf
