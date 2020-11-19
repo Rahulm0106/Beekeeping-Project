@@ -3,6 +3,7 @@
 # Beekeeping-Project
 
 This repository contains the code for the 3rd Semester Project for [VIT Bhopal University](https://vitbhopal.ac.in/)
+####To know more about the project read Project_proposal pdf
 
 ## Team Members
 
